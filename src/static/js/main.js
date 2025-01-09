@@ -244,7 +244,12 @@ async function resumeAudioContext() {
  */
 async function connectToWebsocket() {
     if (!apiKeyInput.value) {
-        logMessage('Please input API Key', 'system');
+        logMessage('Please input password', 'system');
+        return;
+    }
+
+    if(apiKeyInput.value!=="allen123456"){
+        logMessage('Invalid password', 'system');
         return;
     }
 
@@ -274,7 +279,7 @@ async function connectToWebsocket() {
     };  
 
     try {
-        await client.connect(config,apiKeyInput.value);
+        await client.connect(config,"AIzaSyB0_2FoEZWoaBPgecTrHG8SVf4EFmaE9P0");
         isConnected = true;
         await resumeAudioContext();
         connectButton.textContent = 'Disconnect';
